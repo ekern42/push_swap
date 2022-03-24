@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:25 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/22 16:25:48 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/24 16:18:08 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 typedef struct s_stacks
 {
-	int	nbr;
-	struct s_stacks *next;
-} 				t_stacks;
+	int				nbr;
+	struct s_stacks	*next;
+}				t_stacks;
 
 typedef struct s_push_swap
 {
@@ -39,7 +39,16 @@ typedef struct s_push_swap
 void	fc_argv_digit(char *str);
 void	fc_error(int error_nbr);
 void	fc_print_list(t_push_swap *info);
+int		fc_check_in_order(t_push_swap *info);
 void	fc_check_nb_element(t_push_swap *info, int nbr_of_elem);
 void	fc_big_sort(t_push_swap *info);
+
+/* Steps */
+
+void	fc_push_a(t_push_swap *info);
+void	fc_push_b(t_push_swap *info);
+void	fc_swap(t_push_swap *info, int a);
+void	fc_rotate(t_push_swap *info, int a);
+void	fc_re_rotate(t_push_swap *info, int a);
 
 #endif

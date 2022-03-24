@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 14:03:42 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/02 16:56:34 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/24 14:39:23 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 		if (str[a] > 47 && str[a] < 58)
 			b *= 10;
 	}
-	return (b);
+	return (c * b);
 }
 /*
 int main(void)

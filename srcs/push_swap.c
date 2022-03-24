@@ -6,25 +6,20 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:23 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/22 16:26:29 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/24 16:22:26 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void fc_insert(t_push_swap *info, int b)
+static void	fc_insert(t_push_swap *info, int b)
 {
-	t_stacks *newa;
-	t_stacks *newb;
-	
+	t_stacks	*newa;
+
 	newa = malloc(sizeof(*newa));
-	newb = malloc(sizeof(*newb));
 	newa->nbr = b;
 	newa->next = info->a;
 	info->a = newa;
-	newb->nbr = 0;
-	newb->next = info->b;
-	info->b = newb;
 }
 
 static int	fc_multiple_args(char **tab_str, int nbr_arg, t_push_swap *info)
@@ -32,6 +27,7 @@ static int	fc_multiple_args(char **tab_str, int nbr_arg, t_push_swap *info)
 	int	a;
 	int	b;
 	int	c;
+	int	d;
 
 	c = nbr_arg;
 	a = -1;
@@ -41,16 +37,17 @@ static int	fc_multiple_args(char **tab_str, int nbr_arg, t_push_swap *info)
 		b = ft_atoi(tab_str[a]);
 		fc_insert(info, b);
 	}
-	fc_print_list(info);
-	fc_check_nb_element(info, nbr_arg);
+//	fc_print_list(info);
+	d = fc_check_in_order(info);
+	if (d == 1)
+		fc_check_nb_element(info, nbr_arg);
 	return (1);
-	
 }
 
 static int	fc_one_arg(char *str, t_push_swap *info)
 {
-	int	a;
-	int	b;
+	int		a;
+	int		b;
 	char	**tab_str;
 
 	a = -1;
@@ -80,9 +77,9 @@ static void	fc_stack_init(t_push_swap *info, t_stacks *stack)
 
 int	main(int ac, char **av)
 {
-	t_push_swap info;
+	t_push_swap	info;
 	t_stacks	stack;
-	
+
 	if (ac < 2)
 		fc_error(2);
 	fc_stack_init(&info, &stack);

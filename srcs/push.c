@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   small_sort.c                                       :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 16:15:06 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/24 16:24:20 by ekern            ###   ########.fr       */
+/*   Created: 2022/03/24 11:29:58 by ekern             #+#    #+#             */
+/*   Updated: 2022/03/24 13:52:54 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	fc_small_sort(t_push_swap *info)
+void	fc_push_a(t_push_swap *info)
 {
-	fc_print_list(info);
+	t_stacks	*temp;
+
+	if (info->b == NULL)
+		return ;
+	temp = info->b;
+	info->b = temp->next;
+	temp->next = info->a;
+	info->a = temp;
+	write(1, "pa\n", 3);
 }
 
-void	fc_check_nb_element(t_push_swap *info, int nbr_of_elem)
+void	fc_push_b(t_push_swap *info)
 {
-	if (nbr_of_elem <= 5)
-		fc_small_sort(info);
-	else
-		fc_big_sort(info);
+	t_stacks	*temp;
+
+	if (info->a == NULL)
+		return ;
+	temp = info->a;
+	info->a = temp->next;
+	temp->next = info->b;
+	info->b = temp;
+	write(1, "pb\n", 3);
 }
