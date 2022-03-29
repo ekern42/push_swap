@@ -6,13 +6,13 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:52:09 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/24 16:34:23 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/29 15:28:06 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fc_error(int error_nbr)
+void	fc_error(t_push_swap *info, int error_nbr)
 {
 	ft_printf("Error\n");
 	if (error_nbr == 1)
@@ -22,17 +22,20 @@ void	fc_error(int error_nbr)
 		/* A CHANGER */
 		ft_printf("Nbr of arg should be at least 2\n");
 	}
+	if (error_nbr == 3)
+		ft_printf("Same nbr detected\n");
+	free (info->a);
 	exit (0);
 }
 
-void	fc_argv_digit(char *str)
+void	fc_argv_digit(t_push_swap *info, char *str)
 {
 	while (*str != '\0')
 	{
 		if (!(*str >= '0' && *str <= '9'))
 		{
 			if (*str != '-')
-				fc_error(1);
+				fc_error(info, 1);
 		}
 		str++;
 	}
@@ -52,7 +55,8 @@ void	fc_print_list(t_push_swap *info)
 		now = now->next;
 		a--;
 	}
-	ft_printf("END\nStack b : ");
+	ft_printf("END\n");
+	ft_printf("Stack b : ");
 	now = info->b;
 	while (now != NULL && a > 0)
 	{
@@ -83,15 +87,22 @@ int	fc_check_in_order(t_push_swap *info)
 		return (1);
 }
 
-int fc_check_same_digit(t_push_swap *info)
+void	fc_check_same_digit(t_push_swap *info)
 {
 	t_stacks *temp1;
 	t_stacks *temp2;
 
 	temp1 = info->a;
 	temp2 = temp1->next;
-	while (temp1->nbr != temp2->nbr)
+	while (temp1->next != NULL)
 	{
-		while (temp)
+		while (temp2)
+		{
+			if (temp1->nbr == temp2->nbr)
+				fc_error (info, 3);
+			temp2 = temp2->next;
+		}	
+		temp1 = temp1->next;
+		temp2 = temp1->next;
 	}
 }

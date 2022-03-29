@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:30:43 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/24 15:48:39 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/29 13:49:00 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	fc_swap(t_push_swap *info, int a)
 	int	b;
 
 	b = 0;
-	if (a == 1)
+	if (a == 'a')
 		b = fc_swap_a(info);
-	else if (a == 2)
+	else if (a == 'b')
 		b = fc_swap_b(info);
-	else if (a == 3)
+	else if (a == 's')
 	{
 		b = fc_swap_a(info);
 		b += fc_swap_b(info);

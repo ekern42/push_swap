@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:23 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/24 16:22:26 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/29 16:24:24 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ static int	fc_multiple_args(char **tab_str, int nbr_arg, t_push_swap *info)
 	a = -1;
 	while (c-- != 0)
 	{
-		fc_argv_digit(tab_str[++a]);
+		fc_argv_digit(info, tab_str[++a]);
 		b = ft_atoi(tab_str[a]);
 		fc_insert(info, b);
 	}
 //	fc_print_list(info);
+	fc_check_same_digit(info);
 	d = fc_check_in_order(info);
 	if (d == 1)
 		fc_check_nb_element(info, nbr_arg);
@@ -81,11 +82,12 @@ int	main(int ac, char **av)
 	t_stacks	stack;
 
 	if (ac < 2)
-		fc_error(2);
+		return (0);
 	fc_stack_init(&info, &stack);
 	if (ac == 2)
 		fc_one_arg(av[1], &info);
 	if (ac > 2)
 		fc_multiple_args(av + 1, ac - 1, &info);
+	free (info.a);
 	return (0);
 }

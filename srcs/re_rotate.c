@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:30:21 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/24 15:54:45 by ekern            ###   ########.fr       */
+/*   Updated: 2022/03/29 13:56:44 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	fc_re_rotate(t_push_swap *info, int a)
 	int	b;
 
 	b = 0;
-	if (a == 1)
+	if (a == 'a')
 	{
 		b = fc_re_rotate_a(info);
 	}
-	else if (a == 2)
+	else if (a == 'b')
 	{
 		b = fc_re_rotate_b(info);
 	}
-	else if (a == 3)
+	else if (a == 'r')
 	{
 		b = fc_re_rotate_a(info);
 		b += fc_re_rotate_b(info);
