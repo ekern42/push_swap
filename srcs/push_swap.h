@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:25 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/29 15:59:00 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/05 15:33:43 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	fc_print_list(t_push_swap *info);
 int		fc_check_in_order(t_push_swap *info);
 void	fc_check_same_digit(t_push_swap *info);
 void	fc_check_nb_element(t_push_swap *info, int nbr_of_elem);
-void	fc_big_sort(t_push_swap *info);
+void	fc_big_sort(t_push_swap *info, int nbr_of_elem);
+void	fc_final_free(t_push_swap *info);
 
 /* Steps */
 

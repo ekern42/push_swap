@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:15:06 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/29 16:30:05 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/05 15:33:24 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,21 @@ static void	fc_sort_3_nbrs(t_push_swap *info)
 	{
 		if (temp1->nbr > temp3->nbr)
 		{
-			fc_swap(info, 'a');
+			fc_rotate(info, 'a');
 			temp1 = info->a;
-			temp3 = temp1->next;	
+			temp3 = temp1->next;
 			temp3 = temp3->next;
 		}
 		if (temp1->nbr < temp3->nbr)
 		{
-			fc_rotate(info, 'a');
+			fc_swap(info, 'a');
 			temp1 = info->a;
-			temp3 = temp1->next;	
+			temp3 = temp1->next;
 			temp3 = temp3->next;
 		}
 	}
 }
+
 static void	fc_pos_check(t_push_swap *info, int nbr_of_elem, int pos)
 {
 	t_stacks	*temp1;
@@ -46,10 +47,10 @@ static void	fc_pos_check(t_push_swap *info, int nbr_of_elem, int pos)
 	if (pos == nbr_of_elem - 1)
 		fc_swap(info, 'a');
 	else if (pos == 3 && nbr_of_elem == 5)
-		{
-			fc_rotate(info, 'a');
-			fc_swap(info, 'a');
-		}
+	{
+		fc_rotate(info, 'a');
+		fc_swap(info, 'a');
+	}
 	else if (pos == 2)
 	{
 		fc_re_rotate(info, 'a');
@@ -65,6 +66,7 @@ static void	fc_small_sort(t_push_swap *info, int nbr_of_elem)
 	t_stacks	*temp1;
 	t_stacks	*temp2;
 	int			pos[2];
+
 	while (nbr_of_elem > 3)
 	{
 		pos[0] = nbr_of_elem;
@@ -73,7 +75,7 @@ static void	fc_small_sort(t_push_swap *info, int nbr_of_elem)
 		while (temp2)
 		{
 			pos[0]--;
-			if (temp1->nbr < temp2->nbr)
+			if (temp1->nbr > temp2->nbr)
 			{
 				pos[1] = pos[0];
 				temp1 = temp2;
@@ -86,17 +88,14 @@ static void	fc_small_sort(t_push_swap *info, int nbr_of_elem)
 	fc_sort_3_nbrs(info);
 	fc_push_a(info);
 	fc_push_a(info);
-//	fc_check_in_order(info);
-	fc_print_list(info);
-	pos[0] = fc_check_in_order(info);
-	if (pos[0] == 0)
-		ft_printf("Perfect\n");
 }
 
 void	fc_check_nb_element(t_push_swap *info, int nbr_of_elem)
 {
-	if (nbr_of_elem <= 5)
+	if (nbr_of_elem == 2)
+		fc_swap(info, 'a');
+	else if (nbr_of_elem <= 5)
 		fc_small_sort(info, nbr_of_elem);
 	else
-		fc_big_sort(info);
+		fc_big_sort(info, nbr_of_elem);
 }

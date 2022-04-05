@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 11:30:31 by ekern             #+#    #+#             */
-/*   Updated: 2022/03/29 13:47:58 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/05 12:40:00 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	fc_rotate_a(t_push_swap *info)
 	temp2 = info->a;
 	info->a = temp2->next;
 	temp2->next = NULL;
-//	printf("%d\n", temp1->nbr);
 	return (1);
 }
 
