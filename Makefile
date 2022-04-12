@@ -6,7 +6,7 @@
 #    By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 13:40:58 by ekern             #+#    #+#              #
-#    Updated: 2022/04/05 13:04:21 by ekern            ###   ########.fr        #
+#    Updated: 2022/04/12 15:24:27 by ekern            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJS = ${SRCS:c=o}
 all : $(LIBFT) $(NAME)
 
 $(PUSH_SWAP) : $(OBJS)
-	$(CC) $(CFLAGS) $(LIBFT_FILE) $^ -o $(NAME)
+	$(CC) $(CFLAGS) $^ $(LIBFT_FILE) -o $(NAME)
 
 srcs/%.o : %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -c $<

@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:25 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/05 15:33:43 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/12 16:23:55 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_push_swap
 /* Functions */
 
 void	fc_argv_digit(t_push_swap *info, char *str);
-void	fc_error(t_push_swap *info, int error_nbr);
+void	fc_error(t_push_swap *info);
 void	fc_print_list(t_push_swap *info);
 int		fc_check_in_order(t_push_swap *info);
 void	fc_check_same_digit(t_push_swap *info);

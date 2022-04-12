@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:15:06 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/05 15:33:24 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/12 16:21:00 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void	fc_sort_3_nbrs(t_push_swap *info)
 			temp3 = temp1->next;
 			temp3 = temp3->next;
 		}
+		if (fc_check_in_order(info) == 0)
+			break ;
 		if (temp1->nbr < temp3->nbr)
 		{
 			fc_swap(info, 'a');
@@ -67,9 +69,10 @@ static void	fc_small_sort(t_push_swap *info, int nbr_of_elem)
 	t_stacks	*temp2;
 	int			pos[2];
 
-	while (nbr_of_elem > 3)
+	while (--nbr_of_elem > 3)
 	{
 		pos[0] = nbr_of_elem;
+		pos[1] = 0;
 		temp1 = info->a;
 		temp2 = temp1->next;
 		while (temp2)
@@ -83,7 +86,6 @@ static void	fc_small_sort(t_push_swap *info, int nbr_of_elem)
 			temp2 = temp2->next;
 		}
 		fc_pos_check(info, nbr_of_elem, pos[1]);
-		nbr_of_elem--;
 	}
 	fc_sort_3_nbrs(info);
 	fc_push_a(info);
@@ -95,7 +97,7 @@ void	fc_check_nb_element(t_push_swap *info, int nbr_of_elem)
 	if (nbr_of_elem == 2)
 		fc_swap(info, 'a');
 	else if (nbr_of_elem <= 5)
-		fc_small_sort(info, nbr_of_elem);
+		fc_small_sort(info, nbr_of_elem + 1);
 	else
 		fc_big_sort(info, nbr_of_elem);
 }

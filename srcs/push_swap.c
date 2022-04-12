@@ -6,13 +6,13 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:23 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/05 15:14:17 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/12 16:35:15 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	fc_insert(t_push_swap *info, int b)
+static void	fc_insert(t_push_swap *info, long b)
 {
 	t_stacks	*newa;
 
@@ -26,17 +26,17 @@ static void	fc_insert(t_push_swap *info, int b)
 
 static int	fc_multiple_args(char **tab_str, int nbr_arg, t_push_swap *info)
 {
-	int	a;
-	int	b;
-	int	c;
-	int	d;
+	long	b;
+	int		c;
+	int		d;
 
 	c = nbr_arg;
-	a = -1;
 	while (c != 0)
 	{
 		fc_argv_digit(info, tab_str[--c]);
-		b = ft_atoi(tab_str[c]);
+		b = ft_atol(tab_str[c]);
+		if (b > 2147483647 || b < -2147483648)
+			fc_error(info);
 		fc_insert(info, b);
 	}
 	fc_check_same_digit(info);

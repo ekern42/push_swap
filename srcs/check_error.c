@@ -6,19 +6,15 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:52:09 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/05 15:06:52 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/12 16:22:54 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fc_error(t_push_swap *info, int error_nbr)
+void	fc_error(t_push_swap *info)
 {
 	ft_printf("Error\n");
-	if (error_nbr == 1)
-		ft_printf("In a string only number and space are authorized\n");
-	if (error_nbr == 3)
-		ft_printf("Same nbr detected\n");
 	fc_final_free(info);
 	exit (0);
 }
@@ -30,7 +26,7 @@ void	fc_argv_digit(t_push_swap *info, char *str)
 		if (!(*str >= '0' && *str <= '9'))
 		{
 			if (*str != '-')
-				fc_error(info, 1);
+				fc_error(info);
 		}
 		str++;
 	}
@@ -41,7 +37,7 @@ void	fc_print_list(t_push_swap *info)
 	t_stacks	*now;
 	int			a;
 
-	a = 10;
+	a = 100;
 	now = info->a;
 	ft_printf("Stack a : ");
 	while (now != NULL && a > 0)
@@ -94,7 +90,7 @@ void	fc_check_same_digit(t_push_swap *info)
 		while (temp2)
 		{
 			if (temp1->nbr == temp2->nbr)
-				fc_error (info, 3);
+				fc_error (info);
 			temp2 = temp2->next;
 		}	
 		temp1 = temp1->next;

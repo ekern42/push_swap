@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:43:12 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/05 15:17:27 by ekern            ###   ########.fr       */
+/*   Updated: 2022/04/12 15:23:10 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	*fc_dec_to_binary(int dec)
 {
 	int	*tab;
 	int	a;
-	int	b;
 
-	b = 1;
 	a = -1;
 	tab = malloc(sizeof(int *) * 32);
 	while (++a < 32)
@@ -30,12 +28,12 @@ int	*fc_dec_to_binary(int dec)
 	}
 	while (dec != 0)
 	{
-	//	printf("%d\n", dec);
 		tab[--a] = dec % 2;
-		dec /= 2; 
+		dec /= 2;
 	}
 	return (tab);
 }
+
 /*
 int	main(void)
 {
