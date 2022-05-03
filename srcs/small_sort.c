@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:15:06 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/12 16:21:00 by ekern            ###   ########.fr       */
+/*   Updated: 2022/05/03 12:31:28 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 static void	fc_sort_3_nbrs(t_push_swap *info)
 {
 	t_stacks	*temp1;
-	t_stacks	*temp3;
+	t_stacks	*temp2;
 
 	temp1 = info->a;
-	temp3 = temp1->next;
-	temp3 = temp3->next;
+	temp2 = temp1->next;
+	temp2 = temp2->next;
 	while (fc_check_in_order(info) != 0)
 	{
-		if (temp1->nbr > temp3->nbr)
+		if (temp1->nbr > temp2->nbr)
 		{
 			fc_rotate(info, 'a');
 			temp1 = info->a;
-			temp3 = temp1->next;
-			temp3 = temp3->next;
+			temp2 = temp1->next;
+			temp2 = temp2->next;
 		}
 		if (fc_check_in_order(info) == 0)
 			break ;
-		if (temp1->nbr < temp3->nbr)
+		if (temp1->nbr < temp2->nbr)
 		{
 			fc_swap(info, 'a');
 			temp1 = info->a;
-			temp3 = temp1->next;
-			temp3 = temp3->next;
+			temp2 = temp1->next;
+			temp2 = temp2->next;
 		}
 	}
 }

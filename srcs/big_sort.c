@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:15:03 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/12 15:18:05 by ekern            ###   ########.fr       */
+/*   Updated: 2022/05/03 12:31:09 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static void	fc_change_nbr(t_push_swap *info, int nbr_of_elem, int *nbr_tab)
 			temp2 = temp2->next;
 			pos[0]++;
 		}
-		nbr_tab[pos[1]] = nbr_of_elem;
+		if (temp1->nbr != -2147483648)
+			nbr_tab[pos[1]] = nbr_of_elem;
 		temp1->nbr = -2147483648;
 	}
 	fc_new_nbr(info, nbr_tab);

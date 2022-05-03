@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:23 by ekern             #+#    #+#             */
-/*   Updated: 2022/04/12 16:35:15 by ekern            ###   ########.fr       */
+/*   Updated: 2022/05/03 11:21:37 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,6 @@ void	fc_final_free(t_push_swap *info)
 		free_time = temp;
 	}
 }
-/*
-static void	fc_stack_init(t_push_swap *info, t_stacks *stack)
-{
-	info = malloc(sizeof(*info));
-	stack = malloc(sizeof(*stack));
-	if (!info || !stack)
-		exit (0);
-	stack->next = NULL;
-	stack->nbr = 0;
-	info->a = stack;
-	info->b = stack;
-	free (stack);
-}
-*/
 
 int	main(int ac, char **av)
 {
@@ -105,9 +91,9 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (ac == 2)
+	else if (ac == 2)
 		fc_one_arg(av[1], &info);
-	if (ac > 2)
+	else if (ac > 2)
 		fc_multiple_args(av + 1, ac - 1, &info);
 	fc_final_free(&info);
 	return (0);
