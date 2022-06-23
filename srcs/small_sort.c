@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:15:06 by ekern             #+#    #+#             */
-/*   Updated: 2022/05/03 12:31:28 by ekern            ###   ########.fr       */
+/*   Updated: 2022/06/23 11:07:28 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ static void	fc_sort_3_nbrs(t_push_swap *info)
 
 static void	fc_pos_check(t_push_swap *info, int nbr_of_elem, int pos)
 {
-	t_stacks	*temp1;
-
-	temp1 = info->a;
 	if (pos == nbr_of_elem - 1)
 		fc_swap(info, 'a');
 	else if (pos == 3 && nbr_of_elem == 5)

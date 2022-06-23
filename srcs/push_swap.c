@@ -6,7 +6,7 @@
 /*   By: ekern <ekern@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:41:23 by ekern             #+#    #+#             */
-/*   Updated: 2022/05/03 11:21:37 by ekern            ###   ########.fr       */
+/*   Updated: 2022/06/23 12:04:01 by ekern            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	fc_multiple_args(char **tab_str, int nbr_arg, t_push_swap *info)
 	long	b;
 	int		c;
 	int		d;
-
+	
 	c = nbr_arg;
 	while (c != 0)
 	{
@@ -88,7 +88,9 @@ void	fc_final_free(t_push_swap *info)
 int	main(int ac, char **av)
 {
 	t_push_swap	info;
-
+	
+	info.a = NULL;
+	info.b = NULL;
 	if (ac < 2)
 		return (0);
 	else if (ac == 2)
